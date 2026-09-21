@@ -97,7 +97,7 @@
       gap: 14px;
     }
 
-    /* Profile Card */
+    /* Karta Profilu */
     .profile-card {
       background: var(--card-bg);
       border-radius: 12px;
@@ -109,20 +109,41 @@
       border-left: 5px solid var(--cd-blue);
     }
 
+    /* Kontejner pro fotku a stav pod ní */
+    .profile-photo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
     .profile-photo {
-      width: 85px;
-      height: 110px;
+      width: 90px;
+      height: 120px;
       object-fit: cover;
       border-radius: 8px;
       border: 2px solid #DDD;
       background-color: #EEE;
-      flex-shrink: 0;
     }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 6px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+
+    .badge-offline { background-color: #E0E0E0; color: #555; }
+    .badge-online { background-color: #D4EDDA; color: #155724; }
 
     .profile-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
       flex: 1;
     }
 
@@ -139,19 +160,21 @@
 
     .profile-trains-section {
       margin-top: 6px;
-      font-size: 0.8rem;
+      padding-top: 6px;
+      border-top: 1px dashed #DDD;
     }
 
     .profile-trains-title {
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: bold;
       color: var(--cd-navy);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .train-badges-wrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 6px;
     }
 
     .train-badge-chip {
@@ -159,23 +182,11 @@
       color: var(--cd-navy);
       border: 1px solid var(--cd-blue);
       border-radius: 12px;
-      padding: 2px 8px;
+      padding: 3px 8px;
       font-size: 0.75rem;
       font-weight: 600;
-    }
-
-    .badge {
       display: inline-block;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      margin-top: 6px;
-      width: fit-content;
     }
-
-    .badge-offline { background-color: #E0E0E0; color: #555; }
-    .badge-online { background-color: #D4EDDA; color: #155724; }
 
     .card {
       background: var(--card-bg);
@@ -356,24 +367,28 @@
     <div class="content">
       <!-- Profilová Karta -->
       <div class="profile-card">
-        <img 
-          class="profile-photo" 
-          src="https://cdn.imagetourls.com/uploads/tyImg/ImGlIV2C.jpg" 
-          alt="Jakub Štěpánek" 
-          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80';"
-        />
+        <!-- Vlevo fotka a stav přímo pod ní -->
+        <div class="profile-photo-container">
+          <img 
+            class="profile-photo" 
+            src="https://cdn.imagetourls.com/uploads/tyImg/ImGlIV2C.jpg" 
+            alt="Jakub Štěpánek" 
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80';"
+          />
+          <span id="statusBadge" class="badge badge-offline">Nepřihlášen</span>
+        </div>
+
+        <!-- Vpravo informace -->
         <div class="profile-info">
           <h2>Jakub Štěpánek</h2>
           <p><strong>Narozen:</strong> 09.10.2013</p>
           <p><strong>Pozice:</strong> Strojvůdce</p>
           
-          <!-- Seznam vlaků přímo na profilu -->
+          <!-- Seznam vlaků na profilu -->
           <div class="profile-trains-section">
             <div class="profile-trains-title">Moje vlaky / lokomotivy:</div>
             <div id="profileTrainBadges" class="train-badges-wrapper"></div>
           </div>
-
-          <span id="statusBadge" class="badge badge-offline">Nepřihlášen</span>
         </div>
       </div>
 
@@ -393,11 +408,11 @@
           <div id="categoryList" class="item-list"></div>
         </div>
 
-        <!-- Kolonka Přidat Vlaky (vlastní správa) -->
+        <!-- Sekce Správa Vlaků / Lokomotiv -->
         <div class="card">
           <h3>Správa vlaků / lokomotiv</h3>
           <div class="form-group">
-            <input type="text" id="trainInput" placeholder="Zadejte vlak/lokomotivu (např. 362, RegioPanter)...">
+            <input type="text" id="trainInput" placeholder="Přidat vlak/lokomotivu (např. 362, RegioPanter)...">
             <button class="btn-action" onclick="addTrain()">+ Přidat vlak / lokomotivu</button>
           </div>
           <div id="trainList" class="item-list"></div>
@@ -431,6 +446,7 @@
     </div>
   </div>
 
+  <!-- Přihlašovací okno -->
   <div id="loginModal" class="modal-overlay hidden">
     <div class="modal">
       <h3 style="color:var(--cd-navy); margin-bottom:12px;">Přihlášení strojvůdce</h3>
@@ -453,9 +469,9 @@
   </div>
 
   <script>
-    const STORAGE_KEY_CATS = 'cd_cats_jakub';
-    const STORAGE_KEY_TRAINS = 'cd_trains_jakub';
-    const STORAGE_KEY_RIDES = 'cd_rides_jakub';
+    const STORAGE_KEY_CATS = 'cd_cats_jakub_v2';
+    const STORAGE_KEY_TRAINS = 'cd_trains_jakub_v2';
+    const STORAGE_KEY_RIDES = 'cd_rides_jakub_v2';
 
     let isLoggedIn = false;
     let categories = [];
@@ -538,12 +554,12 @@
       }
     }
 
-    /* Zobrazení vlaků na profilu */
     function renderProfileTrains() {
       const profileContainer = document.getElementById('profileTrainBadges');
+      if (!profileContainer) return;
       profileContainer.innerHTML = "";
 
-      if (trains.length === 0) {
+      if (!trains || trains.length === 0) {
         profileContainer.innerHTML = "<span style='color:#888; font-size:0.75rem;'>Žádné přidané vlaky</span>";
         return;
       }
@@ -556,10 +572,10 @@
       });
     }
 
-    /* --- KATEGORIE --- */
     function renderCategories() {
       const listEl = document.getElementById('categoryList');
       const selectEl = document.getElementById('rideCatSelect');
+      if (!listEl || !selectEl) return;
       listEl.innerHTML = "";
       selectEl.innerHTML = "";
 
@@ -583,7 +599,7 @@
 
     function addCategory() {
       const input = document.getElementById('catInput');
-      if (input.value.trim()) {
+      if (input && input.value.trim()) {
         categories.push(input.value.trim());
         input.value = "";
         saveCategories(); renderCategories();
@@ -605,28 +621,31 @@
       }
     }
 
-    /* --- VLAKY --- */
     function renderTrains() {
       const listEl = document.getElementById('trainList');
       const selectEl = document.getElementById('rideTrainSelect');
-      listEl.innerHTML = "";
-      selectEl.innerHTML = "";
+      if (listEl) listEl.innerHTML = "";
+      if (selectEl) selectEl.innerHTML = "";
 
       trains.forEach((train, index) => {
-        const item = document.createElement('div');
-        item.className = 'list-item';
-        item.innerHTML = `
-          <span>${train}</span>
-          <div class="item-actions">
-            <button class="btn-sm btn-edit" onclick="renameTrain(${index})">Upravit</button>
-            <button class="btn-sm btn-delete" onclick="deleteTrain(${index})">Smazat</button>
-          </div>
-        `;
-        listEl.appendChild(item);
+        if (listEl) {
+          const item = document.createElement('div');
+          item.className = 'list-item';
+          item.innerHTML = `
+            <span>${train}</span>
+            <div class="item-actions">
+              <button class="btn-sm btn-edit" onclick="renameTrain(${index})">Upravit</button>
+              <button class="btn-sm btn-delete" onclick="deleteTrain(${index})">Smazat</button>
+            </div>
+          `;
+          listEl.appendChild(item);
+        }
 
-        const option = document.createElement('option');
-        option.value = train; option.textContent = train;
-        selectEl.appendChild(option);
+        if (selectEl) {
+          const option = document.createElement('option');
+          option.value = train; option.textContent = train;
+          selectEl.appendChild(option);
+        }
       });
 
       renderProfileTrains();
@@ -634,7 +653,7 @@
 
     function addTrain() {
       const input = document.getElementById('trainInput');
-      if (input.value.trim()) {
+      if (input && input.value.trim()) {
         trains.push(input.value.trim());
         input.value = "";
         saveTrains();
@@ -657,9 +676,9 @@
       }
     }
 
-    /* --- JÍZDY --- */
     function renderRides() {
       const listEl = document.getElementById('rideList');
+      if (!listEl) return;
       listEl.innerHTML = "";
 
       if (rides.length === 0) {
@@ -690,13 +709,13 @@
       const trainSelect = document.getElementById('rideTrainSelect');
       const routeInput = document.getElementById('rideRoute');
 
-      if (!routeInput.value.trim()) { alert("Vyplňte trasy / vlak!"); return; }
+      if (!routeInput.value.trim()) { alert("Vyplňte trasu / vlak!"); return; }
 
       const now = new Date();
       rides.unshift({
         id: Date.now(),
-        category: catSelect.value || "Osobní",
-        train: trainSelect.value || "Nespecifikováno",
+        category: catSelect ? catSelect.value : "Osobní",
+        train: trainSelect ? trainSelect.value : "Nespecifikováno",
         route: routeInput.value.trim(),
         timestamp: now.toLocaleDateString('cs-CZ') + ' ' + now.toLocaleTimeString('cs-CZ')
       });
@@ -713,8 +732,10 @@
       }
     }
 
-    loadStoredData();
-    updateUI();
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStoredData();
+      updateUI();
+    });
   </script>
 </body>
 </html>
