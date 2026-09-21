@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ČD Zaměstnanci - Portál strojvůdce</title>
+  <title>ČD Zaměstnanci - Jakub Štěpánek</title>
   
   <!-- Favikona s ikonou ČD -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230088CC'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-weight='bold' font-size='30'%3EČD%3C/text%3E%3C/svg%3E">
@@ -37,7 +37,6 @@
       color: var(--text-dark);
     }
 
-    /* Mobilní kontejner */
     .app-container {
       width: 100%;
       max-width: 480px;
@@ -49,7 +48,6 @@
       position: relative;
     }
 
-    /* Hlavička */
     .header {
       background-color: var(--cd-navy);
       color: white;
@@ -90,15 +88,8 @@
       transition: background 0.2s;
     }
 
-    .btn-login:active {
-      opacity: 0.8;
-    }
+    .btn-logout { background-color: #555; }
 
-    .btn-logout {
-      background-color: #555;
-    }
-
-    /* Hlavní obsah */
     .content {
       padding: 14px;
       display: flex;
@@ -106,21 +97,21 @@
       gap: 14px;
     }
 
-    /* Karta profilu */
+    /* Profile Card */
     .profile-card {
       background: var(--card-bg);
       border-radius: 12px;
       padding: 14px;
       display: flex;
       gap: 14px;
-      align-items: center;
+      align-items: flex-start;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       border-left: 5px solid var(--cd-blue);
     }
 
     .profile-photo {
       width: 85px;
-      height: 105px;
+      height: 110px;
       object-fit: cover;
       border-radius: 8px;
       border: 2px solid #DDD;
@@ -146,20 +137,46 @@
       color: var(--text-muted);
     }
 
+    .profile-trains-section {
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+
+    .profile-trains-title {
+      font-weight: 600;
+      color: var(--cd-navy);
+      margin-bottom: 4px;
+    }
+
+    .train-badges-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .train-badge-chip {
+      background-color: var(--cd-light-blue);
+      color: var(--cd-navy);
+      border: 1px solid var(--cd-blue);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
     .badge {
       display: inline-block;
       padding: 4px 8px;
       border-radius: 12px;
       font-size: 0.75rem;
       font-weight: bold;
-      margin-top: 4px;
+      margin-top: 6px;
       width: fit-content;
     }
 
     .badge-offline { background-color: #E0E0E0; color: #555; }
     .badge-online { background-color: #D4EDDA; color: #155724; }
 
-    /* Karty sekcí */
     .card {
       background: var(--card-bg);
       border-radius: 12px;
@@ -175,7 +192,6 @@
       padding-bottom: 6px;
     }
 
-    /* Formuláře a vstupy */
     .form-group {
       margin-bottom: 12px;
       display: flex;
@@ -198,11 +214,6 @@
       background-color: #FFF;
     }
 
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--cd-blue);
-    }
-
     .btn-action {
       background-color: var(--cd-blue);
       color: white;
@@ -213,14 +224,8 @@
       font-size: 0.95rem;
       cursor: pointer;
       width: 100%;
-      margin-top: 4px;
     }
 
-    .btn-action:active {
-      background-color: #006699;
-    }
-
-    /* Seznamy */
     .item-list {
       display: flex;
       flex-direction: column;
@@ -239,11 +244,7 @@
       gap: 10px;
     }
 
-    .item-actions {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-    }
+    .item-actions { display: flex; gap: 6px; }
 
     .btn-sm {
       padding: 8px 10px;
@@ -257,7 +258,6 @@
     .btn-edit { background-color: #FFC107; color: #222; }
     .btn-delete { background-color: var(--cd-red); color: white; }
 
-    /* Design karty jízdy */
     .ride-item {
       display: flex;
       flex-direction: column;
@@ -273,16 +273,12 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 10px;
-      width: 100%;
     }
 
     .ride-title {
       font-size: 1rem;
       font-weight: bold;
       color: var(--text-dark);
-      text-align: left;
-      word-break: break-word;
-      overflow-wrap: anywhere;
       flex: 1;
     }
 
@@ -292,15 +288,9 @@
       border: none;
       width: 32px;
       height: 32px;
-      min-width: 32px;
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-weight: bold;
-      font-size: 1rem;
       cursor: pointer;
-      flex-shrink: 0;
     }
 
     .ride-details {
@@ -309,7 +299,6 @@
       gap: 2px;
       font-size: 0.85rem;
       color: var(--cd-navy);
-      text-align: left;
     }
 
     .ride-time {
@@ -318,7 +307,6 @@
       margin-top: 4px;
     }
 
-    /* Modal dialog */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -336,12 +324,6 @@
       border-radius: 12px;
       width: 100%;
       max-width: 360px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .modal h3 {
-      margin-bottom: 14px;
-      color: var(--cd-navy);
     }
 
     .error-msg {
@@ -351,9 +333,7 @@
       display: none;
     }
 
-    .hidden {
-      display: none !important;
-    }
+    .hidden { display: none !important; }
 
     .info-box {
       text-align: center;
@@ -366,7 +346,6 @@
 <body>
 
   <div class="app-container">
-    <!-- Hlavička -->
     <header class="header">
       <div class="header-title">
         <span>ČD</span> Zaměstnanci
@@ -387,16 +366,21 @@
           <h2>Jakub Štěpánek</h2>
           <p><strong>Narozen:</strong> 09.10.2013</p>
           <p><strong>Pozice:</strong> Strojvůdce</p>
+          
+          <!-- Seznam vlaků přímo na profilu -->
+          <div class="profile-trains-section">
+            <div class="profile-trains-title">Moje vlaky / lokomotivy:</div>
+            <div id="profileTrainBadges" class="train-badges-wrapper"></div>
+          </div>
+
           <span id="statusBadge" class="badge badge-offline">Nepřihlášen</span>
         </div>
       </div>
 
-      <!-- Informace pro nepřihlášené -->
       <div id="guestNotice" class="card info-box">
-         Pro správu kategorií, vlaků/vozidel a přidávání jízd se prosím přihlaste tlačítkem vpravo nahoře.
+         Pro správu kategorií, vlaků a jízd se přihlaste tlačítkem vpravo nahoře.
       </div>
 
-      <!-- Administrační panel (po přihlášení) -->
       <div id="adminPanel" class="hidden">
         
         <!-- Sekce Správa Kategorií -->
@@ -409,11 +393,11 @@
           <div id="categoryList" class="item-list"></div>
         </div>
 
-        <!-- Sekce Vlaky / Lokomotivy, kterými jezdím -->
+        <!-- Kolonka Přidat Vlaky (vlastní správa) -->
         <div class="card">
-          <h3>Vlaky / Lokomotivy, kterými jezdím</h3>
+          <h3>Správa vlaků / lokomotiv</h3>
           <div class="form-group">
-            <input type="text" id="trainInput" placeholder="Např. 362 (Eso), RegioPanter, Vectron...">
+            <input type="text" id="trainInput" placeholder="Zadejte vlak/lokomotivu (např. 362, RegioPanter)...">
             <button class="btn-action" onclick="addTrain()">+ Přidat vlak / lokomotivu</button>
           </div>
           <div id="trainList" class="item-list"></div>
@@ -447,10 +431,9 @@
     </div>
   </div>
 
-  <!-- Přihlašovací Modal -->
   <div id="loginModal" class="modal-overlay hidden">
     <div class="modal">
-      <h3>Přihlášení strojvůdce</h3>
+      <h3 style="color:var(--cd-navy); margin-bottom:12px;">Přihlášení strojvůdce</h3>
       <div id="loginError" class="error-msg">Nesprávné jméno nebo heslo!</div>
       <form onsubmit="submitLogin(event)">
         <div class="form-group">
@@ -470,9 +453,9 @@
   </div>
 
   <script>
-    const STORAGE_KEY_CATS = 'cd_employee_categories_jakub';
-    const STORAGE_KEY_TRAINS = 'cd_employee_trains_jakub';
-    const STORAGE_KEY_RIDES = 'cd_employee_rides_jakub';
+    const STORAGE_KEY_CATS = 'cd_cats_jakub';
+    const STORAGE_KEY_TRAINS = 'cd_trains_jakub';
+    const STORAGE_KEY_RIDES = 'cd_rides_jakub';
 
     let isLoggedIn = false;
     let categories = [];
@@ -480,45 +463,21 @@
     let rides = [];
 
     function loadStoredData() {
-      // Načtení kategorií
       const savedCats = localStorage.getItem(STORAGE_KEY_CATS);
-      if (savedCats) {
-        categories = JSON.parse(savedCats);
-      } else {
-        categories = ["Osobní vlaky", "Rychlíky / Expresy"];
-        saveCategories();
-      }
+      categories = savedCats ? JSON.parse(savedCats) : ["Osobní vlaky", "Rychlíky / Expresy"];
 
-      // Načtení vlaků / lokomotiv
       const savedTrains = localStorage.getItem(STORAGE_KEY_TRAINS);
-      if (savedTrains) {
-        trains = JSON.parse(savedTrains);
-      } else {
-        trains = ["Lokomotiva 362 (Eso)", "RegioPanter 640", "Siemens Vectron 193"];
-        saveTrains();
-      }
+      trains = savedTrains ? JSON.parse(savedTrains) : ["Lokomotiva 362 (Eso)", "RegioPanter 640", "Siemens Vectron 193"];
 
-      // Načtení jízd
       const savedRides = localStorage.getItem(STORAGE_KEY_RIDES);
-      if (savedRides) {
-        rides = JSON.parse(savedRides);
-      } else {
-        rides = [];
-        saveRides();
-      }
+      rides = savedRides ? JSON.parse(savedRides) : [];
+
+      renderProfileTrains();
     }
 
-    function saveCategories() {
-      localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
-    }
-
-    function saveTrains() {
-      localStorage.setItem(STORAGE_KEY_TRAINS, JSON.stringify(trains));
-    }
-
-    function saveRides() {
-      localStorage.setItem(STORAGE_KEY_RIDES, JSON.stringify(rides));
-    }
+    function saveCategories() { localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories)); }
+    function saveTrains() { localStorage.setItem(STORAGE_KEY_TRAINS, JSON.stringify(trains)); }
+    function saveRides() { localStorage.setItem(STORAGE_KEY_RIDES, JSON.stringify(rides)); }
 
     function handleAuthClick() {
       if (isLoggedIn) {
@@ -532,11 +491,8 @@
     function toggleModal(show) {
       const modal = document.getElementById('loginModal');
       document.getElementById('loginError').style.display = 'none';
-      if (show) {
-        modal.classList.remove('hidden');
-      } else {
-        modal.classList.add('hidden');
-      }
+      if (show) modal.classList.remove('hidden');
+      else modal.classList.add('hidden');
     }
 
     function submitLogin(e) {
@@ -560,6 +516,8 @@
       const guestNotice = document.getElementById('guestNotice');
       const adminPanel = document.getElementById('adminPanel');
 
+      renderProfileTrains();
+
       if (isLoggedIn) {
         authBtn.textContent = "Odhlásit";
         authBtn.classList.add('btn-logout');
@@ -580,6 +538,24 @@
       }
     }
 
+    /* Zobrazení vlaků na profilu */
+    function renderProfileTrains() {
+      const profileContainer = document.getElementById('profileTrainBadges');
+      profileContainer.innerHTML = "";
+
+      if (trains.length === 0) {
+        profileContainer.innerHTML = "<span style='color:#888; font-size:0.75rem;'>Žádné přidané vlaky</span>";
+        return;
+      }
+
+      trains.forEach(train => {
+        const chip = document.createElement('span');
+        chip.className = 'train-badge-chip';
+        chip.textContent = train;
+        profileContainer.appendChild(chip);
+      });
+    }
+
     /* --- KATEGORIE --- */
     function renderCategories() {
       const listEl = document.getElementById('categoryList');
@@ -587,15 +563,11 @@
       listEl.innerHTML = "";
       selectEl.innerHTML = "";
 
-      if (categories.length === 0) {
-        listEl.innerHTML = "<p style='font-size:0.85rem; color:#888;'>Žádné kategorie.</p>";
-      }
-
       categories.forEach((cat, index) => {
         const item = document.createElement('div');
         item.className = 'list-item';
         item.innerHTML = `
-          <span style="word-break: break-word; flex:1;">${cat}</span>
+          <span>${cat}</span>
           <div class="item-actions">
             <button class="btn-sm btn-edit" onclick="renameCategory(${index})">Upravit</button>
             <button class="btn-sm btn-delete" onclick="deleteCategory(${index})">Smazat</button>
@@ -604,67 +576,47 @@
         listEl.appendChild(item);
 
         const option = document.createElement('option');
-        option.value = cat;
-        option.textContent = cat;
+        option.value = cat; option.textContent = cat;
         selectEl.appendChild(option);
       });
     }
 
     function addCategory() {
       const input = document.getElementById('catInput');
-      const val = input.value.trim();
-      if (val) {
-        categories.push(val);
+      if (input.value.trim()) {
+        categories.push(input.value.trim());
         input.value = "";
-        saveCategories();
-        renderCategories();
+        saveCategories(); renderCategories();
       }
     }
 
     function renameCategory(index) {
-      const currentName = categories[index];
-      const newName = prompt("Zadejte nový název kategorie:", currentName);
-      if (newName && newName.trim() !== "") {
-        const oldName = categories[index];
+      const newName = prompt("Nový název kategorie:", categories[index]);
+      if (newName && newName.trim()) {
         categories[index] = newName.trim();
-        
-        rides.forEach(ride => {
-          if (ride.category === oldName) {
-            ride.category = newName.trim();
-          }
-        });
-
-        saveCategories();
-        saveRides();
-        renderCategories();
-        renderRides();
+        saveCategories(); renderCategories();
       }
     }
 
     function deleteCategory(index) {
-      if (confirm(`Opravdu chcete smazat kategorii "${categories[index]}"?`)) {
+      if (confirm("Smazat kategorii?")) {
         categories.splice(index, 1);
-        saveCategories();
-        renderCategories();
+        saveCategories(); renderCategories();
       }
     }
 
-    /* --- VLAKY / LOKOMOTIVY --- */
+    /* --- VLAKY --- */
     function renderTrains() {
       const listEl = document.getElementById('trainList');
       const selectEl = document.getElementById('rideTrainSelect');
       listEl.innerHTML = "";
       selectEl.innerHTML = "";
 
-      if (trains.length === 0) {
-        listEl.innerHTML = "<p style='font-size:0.85rem; color:#888;'>Žádné uložené vlaky/lokomotivy.</p>";
-      }
-
       trains.forEach((train, index) => {
         const item = document.createElement('div');
         item.className = 'list-item';
         item.innerHTML = `
-          <span style="word-break: break-word; flex:1;">${train}</span>
+          <span>${train}</span>
           <div class="item-actions">
             <button class="btn-sm btn-edit" onclick="renameTrain(${index})">Upravit</button>
             <button class="btn-sm btn-delete" onclick="deleteTrain(${index})">Smazat</button>
@@ -673,17 +625,17 @@
         listEl.appendChild(item);
 
         const option = document.createElement('option');
-        option.value = train;
-        option.textContent = train;
+        option.value = train; option.textContent = train;
         selectEl.appendChild(option);
       });
+
+      renderProfileTrains();
     }
 
     function addTrain() {
       const input = document.getElementById('trainInput');
-      const val = input.value.trim();
-      if (val) {
-        trains.push(val);
+      if (input.value.trim()) {
+        trains.push(input.value.trim());
         input.value = "";
         saveTrains();
         renderTrains();
@@ -691,30 +643,17 @@
     }
 
     function renameTrain(index) {
-      const currentName = trains[index];
-      const newName = prompt("Zadejte nový název vlaku/lokomotivy:", currentName);
-      if (newName && newName.trim() !== "") {
-        const oldName = trains[index];
+      const newName = prompt("Nový název vlaku/lokomotivy:", trains[index]);
+      if (newName && newName.trim()) {
         trains[index] = newName.trim();
-
-        rides.forEach(ride => {
-          if (ride.train === oldName) {
-            ride.train = newName.trim();
-          }
-        });
-
-        saveTrains();
-        saveRides();
-        renderTrains();
-        renderRides();
+        saveTrains(); renderTrains();
       }
     }
 
     function deleteTrain(index) {
-      if (confirm(`Opravdu chcete smazat vlak/lokomotivu "${trains[index]}"?`)) {
+      if (confirm("Smazat tento vlak?")) {
         trains.splice(index, 1);
-        saveTrains();
-        renderTrains();
+        saveTrains(); renderTrains();
       }
     }
 
@@ -724,7 +663,7 @@
       listEl.innerHTML = "";
 
       if (rides.length === 0) {
-        listEl.innerHTML = "<p style='font-size:0.85rem; color:#888;'>Zatím žádné zaznamenané jízdy.</p>";
+        listEl.innerHTML = "<p style='font-size:0.85rem; color:#888;'>Žádné zaznamenané jízdy.</p>";
         return;
       }
 
@@ -734,12 +673,12 @@
         item.innerHTML = `
           <div class="ride-header">
             <div class="ride-title">${ride.route}</div>
-            <button class="btn-delete-ride" onclick="deleteRide(${index})" title="Smazat jízdu">✕</button>
+            <button class="btn-delete-ride" onclick="deleteRide(${index})">✕</button>
           </div>
           <div class="ride-details">
             <div>Kategorie: <strong>${ride.category}</strong></div>
-            ${ride.train ? `<div>Vlak / Lokomotiva: <strong>${ride.train}</strong></div>` : ''}
-            <div class="ride-time">Čas záznamu: ${ride.timestamp}</div>
+            <div>Vlak: <strong>${ride.train}</strong></div>
+            <div class="ride-time">Čas: ${ride.timestamp}</div>
           </div>
         `;
         listEl.appendChild(item);
@@ -751,38 +690,26 @@
       const trainSelect = document.getElementById('rideTrainSelect');
       const routeInput = document.getElementById('rideRoute');
 
-      if (!catSelect.value) {
-        alert("Nejprve musíte vytvořit alespoň jednu kategorii!");
-        return;
-      }
-
-      if (!routeInput.value.trim()) {
-        alert("Vyplňte prosím trasu nebo název jízdy.");
-        return;
-      }
+      if (!routeInput.value.trim()) { alert("Vyplňte trasy / vlak!"); return; }
 
       const now = new Date();
-      const timestamp = now.toLocaleDateString('cs-CZ') + ' ' + now.toLocaleTimeString('cs-CZ');
-
-      const newRide = {
+      rides.unshift({
         id: Date.now(),
-        category: catSelect.value,
+        category: catSelect.value || "Osobní",
         train: trainSelect.value || "Nespecifikováno",
         route: routeInput.value.trim(),
-        timestamp: timestamp
-      };
+        timestamp: now.toLocaleDateString('cs-CZ') + ' ' + now.toLocaleTimeString('cs-CZ')
+      });
 
-      rides.unshift(newRide);
       saveRides();
       routeInput.value = "";
       renderRides();
     }
 
     function deleteRide(index) {
-      if (confirm("Opravdu chcete tuto jízdu odstranit?")) {
+      if (confirm("Smazat jízdu?")) {
         rides.splice(index, 1);
-        saveRides();
-        renderRides();
+        saveRides(); renderRides();
       }
     }
 
